@@ -34,6 +34,7 @@
   border-radius: 4px;
   color: black;
   background-color: cadetblue;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
