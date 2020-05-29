@@ -1,30 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function paragraph(copy: string) {
-  return (    <p>
-    {copy}
-  </p>)
+
+function input(type: string) {
+  return ( <input className="textInput" type={type}></input>)
   }
 
-const copy = "Edit <code>src/App.tsx</code> and save to reload.";
+const type = "text";
+const label = "Input text here: "
+const formTitle = "Form"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {paragraph(copy)}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <form>
+          <legend>{formTitle}</legend>
+          <label>
+            {label} 
+              {input(type)}
+          </label>
+        </form>
     </div>
   );
 }
