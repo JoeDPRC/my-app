@@ -1,25 +1,11 @@
 import React from 'react';
 import './App.css';
-
-
-function input(type: string) {
-  return ( <input className="textInput" type={type}></input>)
-  }
-
-const type = "text";
-const label = "Input text here: "
-const formTitle = "Form"
+import textInput from './text-input';
 
 function App() {
   return (
     <div className="App">
-        <form>
-          <legend>{formTitle}</legend>
-          <label>
-            {label} 
-              {input(type)}
-          </label>
-        </form>
+        <textInput></textInput>
     </div>
   );
 }
