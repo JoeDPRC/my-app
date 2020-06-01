@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import textInput from './text-input';
+import TextInputBox from './text-input';
 
 function App() {
   return (
     <div className="App">
-        <textInput></textInput>
+      <header>
+        <TextInputBox></TextInputBox>
+      </header>
     </div>
   );
 }

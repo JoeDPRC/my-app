@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './text-input.css';
 
 
 
@@ -16,8 +16,7 @@ function input(type: string) {
         <form>
           <legend>{formTitle}</legend>
             <label>
-            {label} 
-            {input(type)}
+                {label} {input(type)}
             </label>
           </form>
     );

@@ -1,0 +1,11 @@
+.textInput{
+    width: 200px;
+    height: 50px;
+    color: black;
+    background-color: cadetblue;
+    font-size: medium;
+  }
+  
+  label{
+    display: block;
+  }
