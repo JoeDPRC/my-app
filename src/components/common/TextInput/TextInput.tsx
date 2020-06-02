@@ -18,23 +18,27 @@ import { Props } from './Type';
 // }
 
 
-
 const TextInput = ({
-  oninput,
+  onChangeHandler,
   className,
   id,
   type,
+  errorMessage,
+  error = false,
   ...props
 }:Props) => (
-  <input
-    type={type ? '${type}' : 'text'}
-    className={'comp-textInput ${className}'}
-    id={'${id}'}
-    oninput={(
-      input:React.HTMLProps<InputEvent>
-      ):any => {oninput(input)}}
-    {...props}>
-  </input>
+  <React.Fragment>
+    <input
+      type={type ? type : 'text'}
+      className={`comp-textInput ${className}`}
+      id={id}
+      onChange={(
+        e:React.ChangeEvent<HTMLInputElement>
+        ):any => {e.persist();onChangeHandler(e.currentTarget.value)}}
+      {...props}/>
+      
+      <p className={`errorMessage hide ${error ? 'show' : ''}`}>{errorMessage}</p>
+  </React.Fragment>
 );
 
   

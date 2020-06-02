@@ -8,10 +8,10 @@ const Label = ({
     ...props
 }:Props) => (
     <label
-        className={'comp-label ${className}'}
-        id={'${id}'}
+        className={`comp-label ${className}`}
+        {...id}
         {...props}>
-    {props.children}
+    {props.children} 
     </label>
 );
 

@@ -9,3 +9,17 @@
   label{
     display: block;
   }
+
+  
+.errorMessage {
+  color: red;
+  font-weight: bold;
+}
+
+.errorMessage.hide{
+  display: none
+}
+
+.errorMessage.hide.show{
+  display: block
+}
