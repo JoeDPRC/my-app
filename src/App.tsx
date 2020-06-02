@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import TextInputBox from './text-input';
+import TextInputBox from './components/common/TextInput/TextInput';
 
 function App() {
   return (
