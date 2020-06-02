@@ -1,7 +1,6 @@
 export type Props={
     enabled?: boolean,
-    type: string,
-    oninput: Function, 
+    children: string,
     className?: string,
     id?: string,
 }
