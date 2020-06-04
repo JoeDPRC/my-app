@@ -2,15 +2,15 @@ import React from 'react';
 import './App.css';
 import Button from './components/common/Button/Button';
 
-interface IProps {
+type Props = {
 }
 
-interface IState {
+type State = {
   switchedOn: boolean;
 }
 
-export default class App extends React.Component<IProps, IState> {
-  constructor(props: any) {
+export default class App extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props)
     this.state = {switchedOn: false};
     this.clickHandler = this.clickHandler.bind(this);
@@ -38,7 +38,7 @@ export default class App extends React.Component<IProps, IState> {
           onClickHandler={this.clickHandler}
           switchedOn={this.state.switchedOn}
           children={'Press Me!'}
-          onMessage={'the button is switched'}
+          onMessage={'the button is switched on'}
           ></Button>
         </header>
       </div>

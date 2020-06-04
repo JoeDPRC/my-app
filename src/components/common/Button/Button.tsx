@@ -21,7 +21,7 @@ const Button = ({
         >
             {props.children}
         </button>
-        <p className={`errorMessage hide ${switchedOn ? 'show' : ''}`}>{onMessage}</p>
+        <p className={`onMessage hide ${switchedOn ? 'show' : ''}`}>{onMessage}</p>
       </React.Fragment> )
   
   export default Button;
