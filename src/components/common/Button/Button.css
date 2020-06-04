@@ -6,3 +6,16 @@
     background-color: cadetblue;
     font-weight: bold;
   }
+
+  .onMessage {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .onMessage.hide{
+    display: none
+  }
+  
+  .onMessage.hide.show{
+    display: block
+  } 

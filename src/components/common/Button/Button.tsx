@@ -5,17 +5,23 @@ import {Props} from './Type';
 
 const Button = ({
     onClickHandler,
-    className='',
+    className,
+    switchedOn,
+    onMessage,
     ...props
   }:Props) => 
-    ( <button 
-      className={`comp-button ${className}`}
-      onClick={(
-        e:React.MouseEvent<HTMLButtonElement,MouseEvent>
-        ):any => {onClickHandler(e)}}
-      {...props}
-      >
-        {props.children}
-      </button> )
+    ( 
+      <React.Fragment>
+        <button 
+          className={`comp-button ${className}`}
+          onClick={(
+            e:React.MouseEvent<HTMLButtonElement,MouseEvent>
+            ):any => {onClickHandler(switchedOn)}}
+          {...props}
+        >
+            {props.children}
+        </button>
+        <p className={`errorMessage hide ${switchedOn ? 'show' : ''}`}>{onMessage}</p>
+      </React.Fragment> )
   
   export default Button;

@@ -3,4 +3,6 @@ export type Props={
     onClickHandler: Function, 
     children: string,
     className?: string,
+    switchedOn: boolean,
+    onMessage?: string,
 }
