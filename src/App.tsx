@@ -3,36 +3,57 @@ import './App.css';
 import TextInputBox from './components/common/TextInput/TextInput';
 //import Label from './components/common/Label/Label';
 
-let error = false;
+interface IProps {
+}
+
+interface IState {
+  error: boolean;
+}
+
+export default class App extends React.Component<IProps, IState> {
+  constructor(props: any) {
+    super(props)
+    this.state = {error: false};
+    this.errorHandler = this.errorHandler.bind(this);
+  }
 
 //const label = "some text as the label: ";
-const formTitle = "Form Title";
-const myChangeHandler = function(value: string) {
+//const formTitle = "Form Title";
+
+
+ errorHandler(value: string) {
+  let currentComponent = this;
   console.log(value);
-  if (value.length < 5){
-    error=true;
+  if (value.length < 5) {
+    currentComponent.setState({
+      error: true
+    })
+  }
+  else {
+    currentComponent.setState({
+      error: false
+    })
   }
 }
 
-function App() {
-  return (
-    <div className="App">
-      <form>
-        <legend>{formTitle}</legend>
-          {/* <Label 
-          className={'labelClass'}
-          id={'labelId'}
-          children={label}></Label> */}
-          <TextInputBox 
-            className={'textInput'}
-            id={'textInput'}
-            type={'text'}
-            onChangeHandler={myChangeHandler}
-            errorMessage={'error message'}
-            error={error}/>
-      </form>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <form>
+          {/* <legend>{this.formTitle}</legend> */}
+            {/* <Label 
+            className={'labelClass'}
+            id={'labelId'}
+            children={label}></Label> */}
+            <TextInputBox 
+              className={'textInput'}
+              id={'textInput'}
+              type={'text'}
+              onChangeHandler={this.errorHandler}
+              errorMessage={'error message'}
+              error={this.state.error}/>
+        </form>
+      </div>
+    );
+  }
 }
-
-export default App;

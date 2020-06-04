@@ -24,7 +24,7 @@ const TextInput = ({
   id,
   type,
   errorMessage,
-  error = false,
+  error,
   ...props
 }:Props) => (
   <React.Fragment>
