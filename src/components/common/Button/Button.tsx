@@ -16,7 +16,7 @@ const Button = ({
           className={`comp-button ${className}`}
           onClick={(
             e:React.MouseEvent<HTMLButtonElement,MouseEvent>
-            ):any => {onClickHandler(switchedOn)}}
+            ):void => {onClickHandler(e)}}
           {...props}
         >
             {props.children}
