@@ -1,0 +1,21 @@
+.buttonClass {
+    height: 50px;
+    width: 150px;
+    border-radius: 4px;
+    color: black;
+    background-color: cadetblue;
+    font-weight: bold;
+  }
+
+  .onMessage {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .onMessage.hide{
+    display: none
+  }
+  
+  .onMessage.hide.show{
+    display: block
+  } 
