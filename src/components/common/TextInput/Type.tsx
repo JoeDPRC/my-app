@@ -6,4 +6,8 @@ export type Props={
   id?: string,
   errorMessage?: string,
   error: boolean,
+  labelEnabled?:boolean,
+  labelText?: string,
+  labelClass?: string,
+  labelID?: string,
 }

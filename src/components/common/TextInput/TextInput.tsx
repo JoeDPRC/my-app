@@ -3,21 +3,6 @@ import './TextInput.css';
 import { Props } from './Type';
 
 
-
-// class TextInput extends React.Component {
-//   constructor(props) {
-//     super(props)
-//     this.state = {
-//       onInput: props.onInput,
-//       label: props.label,
-//       className: props.className,
-//       type: props.type,
-//   ...props
-//     }
-//   }
-// }
-
-
 const TextInput = ({
   onChangeHandler,
   className,
@@ -25,9 +10,17 @@ const TextInput = ({
   type,
   errorMessage,
   error,
+  labelEnabled,
+  labelText,
+  labelClass,
+  labelID,
   ...props
 }:Props) => (
   <React.Fragment>
+    <label 
+      className={`${labelClass} ${labelEnabled ? '' : 'hide'}`}
+      id={labelID}
+      children={labelText}></label>
     <input
       type={type ? type : 'text'}
       className={`comp-textInput ${className}`}
