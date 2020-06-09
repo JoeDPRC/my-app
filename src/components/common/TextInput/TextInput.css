@@ -1,12 +1,13 @@
   
 .label{
-    display: inline-block;
+    display: block;
     margin-left: 15px;
     margin-right: 15px;
     width: 80px;
   }
 
 .usernameTextInput{
+  display: inline-block;
     width: 200px;
     height: 30px;
     color: black;
@@ -16,6 +17,7 @@
   }
 
   .passwordTextInput{
+    display: inline-block;
     width: 200px;
     height: 30px;
     color: black;

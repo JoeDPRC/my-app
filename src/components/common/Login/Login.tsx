@@ -1,16 +1,27 @@
 import React from 'react';
 import './Login.css';
-import { Props } from './Type';
+import { Props, State } from './Type';
 import TextInputBox from '../TextInput/TextInput';
 import Button from '../Button/Button';
+import { requestService } from '../../../service/LoginRequest';
+import {
+  useHistory
+} from "react-router-dom";
+
+// type response = {
+//   success: string,
+//   message: string,
+//   data: object,
+//   status: string
+// }
 
 
-
-type State = {
-  usernameError: boolean;
-  passwordError: boolean;
-  switchedOn: boolean;
-}
+const requestConfig = {method: 'Post', 
+               url: 'http://localhost:5000/api/v1/auth'};
+               
+// const responseConfig = {dataTransformation: (res: response) => {
+//   res.data;
+// }}
 
 export default class Login extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -18,6 +29,8 @@ export default class Login extends React.Component<Props, State> {
     this.state = {
       usernameError: false,
       passwordError: false,
+      username: '',
+      password: '',
       switchedOn: false,
     };
     this.usernameErrorHandler = this.usernameErrorHandler.bind(this);
@@ -26,50 +39,67 @@ export default class Login extends React.Component<Props, State> {
   }
 
   usernameErrorHandler(value: string) {
-    let currentComponent = this;
+    this.setState({
+      username: value
+    })
     if (value.length < 5) {
-      currentComponent.setState({
+      this.setState({
         usernameError: true,
         switchedOn: false
       })
     }
     else {
-      currentComponent.setState({
+      this.setState({
         usernameError: false
       })
     }
   }
 
   passwordErrorHandler(value: string) {
-    let currentComponent = this;
+    this.setState({
+      password: value
+    })
     if (value.length < 5) {
-      currentComponent.setState({
+      this.setState({
         passwordError: true,
         switchedOn: false
       })
     }
     else {
-      currentComponent.setState({
+      this.setState({
         passwordError: false
       })
     }
   }
 
+
   clickHandler(e: Event) {
     e.preventDefault()
-    let currentComponent = this;
-    console.log(this.state.passwordError)
-    console.log(this.state.usernameError)
+
+    const history = useHistory();
+
     if (this.state.passwordError===false && this.state.usernameError===false) {
-      currentComponent.setState({
-        switchedOn: true
+      requestService(requestConfig).then((res)=>{
+      if (res.status === 200) {
+        history.push("../../containers/common/LoggedInPage/loggedInPage");
+        this.setState({
+          switchedOn: true
+        })
+        } else {
+          this.setState({
+            switchedOn: false
+          })
+        }
       })
     } else {
-      currentComponent.setState({
-        switchedOn: false
-      })
-    }
-  }
+        this.setState({
+          switchedOn: false
+        })
+      }
+}
+
+
+  
 
   render() {
     return(
@@ -86,7 +116,6 @@ export default class Login extends React.Component<Props, State> {
             onChangeHandler={this.usernameErrorHandler}
             errorMessage={'username must be longer the 5 characters'}
             error={this.state.usernameError}/>
-            <br/>
             <TextInputBox
               labelEnabled={true}
               labelText={'Password: '}
@@ -97,11 +126,11 @@ export default class Login extends React.Component<Props, State> {
               onChangeHandler={this.passwordErrorHandler}
               errorMessage={'password must be longer the 5 characters'}
               error={this.state.passwordError}/>
-            <br/>
             <Button
               switchedOn={this.state.switchedOn}
-              className={`buttonClass`} 
+              className={`buttonClass`}
               onClickHandler={this.clickHandler}
+              // onClickHandler={this.loginRequest.doRequest()}
               children={'Login'}
               onMessage={'succesfully entered username and password'}/>
       </form>
