@@ -1,24 +1,21 @@
 import React from 'react';
 import './App.css';
-import Login from './components/common/Login/Login';
+// import LoggedInPage from './containers/common/LoggedInPage/LoggedInPageRouter';
+import {getRoutes} from './components/common/Route/Route'
+
 
 type Props = {
 }
 
 type State = {
-  error: boolean;
 }
 
 export default class App extends React.Component<Props, State> {
 
-
   render() {
     return (
-      <div className="App">
-        <Login
-          className={'formClass'}
-          formTitle={'Login Page'}
-          />
+        <div className="App"> {getRoutes()}
+  
       </div>
     );
   }

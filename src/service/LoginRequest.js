@@ -1,11 +1,11 @@
 import  axios from 'axios'
- 
 
-export const requestService = (requestConfig) => {
+
+export const requestService = (requestConfig, responseConfig, errorConfig) => {
 
   return axios(requestConfig)
-  .then((response) => response.data)
-  .catch((error) => {throw error})
+  .then((response) => responseConfig(response))
+  .catch((error) => errorConfig(error))
 }
 
 
