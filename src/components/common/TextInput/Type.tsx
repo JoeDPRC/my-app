@@ -10,4 +10,5 @@ export type Props={
   labelText?: string,
   labelClass?: string,
   labelID?: string,
+  placeholder?: string
 }

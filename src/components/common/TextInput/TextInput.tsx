@@ -14,27 +14,27 @@ const TextInput = ({
   labelText,
   labelClass,
   labelID,
+  placeholder,
   ...props
 }:Props) => (
-  <React.Fragment>
+  <>
     <label 
       className={`${labelClass} ${labelEnabled ? '' : 'hide'}`}
-      id={labelID}
-      children={labelText}></label>
+      id={labelID}>{labelText}</label>
+      
     <input
       type={type ? type : 'text'}
       className={`comp-textInput ${className}`}
       id={id}
+      placeholder={placeholder ? placeholder : ''}
       onChange={(
         e:React.ChangeEvent<HTMLInputElement>
         ):any => {e.persist();onChangeHandler(e.currentTarget.value)}}
       {...props}/>
       
-      <p className={`errorMessage hide ${error ? 'show' : ''}`}>{errorMessage}</p>
-  </React.Fragment>
+    <p className={`errorMessage hide ${error ? 'show' : ''}`}>{errorMessage}</p>
+  </>
 );
 
-  
-
-  export default TextInput;
+export default TextInput;
   

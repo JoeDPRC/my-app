@@ -1,11 +1,11 @@
 import React from 'react'
 import { BrowserRouter as Router,
-    Switch,
-    Route,
+  Switch,
+  Route,
   Redirect} from "react-router-dom";
 import PATHS from "./Paths";
 import LoginPage from '../../../containers/common/LoginPage/LoginPage';
-import LoggedInPage from '../../../containers/common/LoggedInPage/loggedInPage';
+import HomePage from '../../../containers/common/HomePage/HomePage';
 
 
 
@@ -15,7 +15,7 @@ export function getRoutes() {
     <Router>
       <Switch>
         <Route path={PATHS.login} component={LoginPage}/>
-        <Route path={PATHS.homepage} component={LoggedInPage}/>
+        <Route path={PATHS.homepage} component={HomePage}/>
         <Redirect to={PATHS.login}/>
       </Switch>
     </Router>
