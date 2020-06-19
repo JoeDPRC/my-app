@@ -32,7 +32,7 @@ export default class Login extends React.Component<Props, State> {
       password: '',
       displayButtonError: false,
       loggedIn: false,
-      resStatus: '',
+      buttonDisabled: true
     };
 
     this.usernameErrorHandler = this.usernameErrorHandler.bind(this);
@@ -46,14 +46,16 @@ export default class Login extends React.Component<Props, State> {
       this.setState({
         usernameError: true,
         username: value,
-        displayButtonError: false
+        displayButtonError: false,
+        buttonDisabled: true
       })
     }
     else {
       this.setState({
         usernameError: false,
         username: value,
-        displayButtonError: false
+        displayButtonError: false,
+        buttonDisabled: !usernameAndPasswordAreValid(this.state.passwordError, false, this.state.password, value)
       })
     }
   }
@@ -71,10 +73,14 @@ export default class Login extends React.Component<Props, State> {
       this.setState({
         passwordError: false,
         password: value,
-        displayButtonError: false
+        displayButtonError: false,
+        buttonDisabled: !usernameAndPasswordAreValid(false, this.state.usernameError, value, this.state.username) 
       })
     }
+    
   }
+
+  
   
   clickHandler(e: React.FormEvent<HTMLFormElement>):void {
     
@@ -92,8 +98,7 @@ export default class Login extends React.Component<Props, State> {
         if (res.status === '200') {
           this.setState({
             loggedIn: true,
-            displayButtonError: false,
-            resStatus: res.status
+            displayButtonError: false
           })
         }
       })
@@ -144,6 +149,7 @@ export default class Login extends React.Component<Props, State> {
             className={`buttonClass`}
             onClickHandler={() => {}}
             children={'Login'}
+            disabled={this.state.buttonDisabled}
             onMessage={buttonErrorMessageSwitch(
               this.state.username, 
               this.state.password)}/>

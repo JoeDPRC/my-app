@@ -8,12 +8,14 @@ const Button = ({
   className,
   displayError,
   onMessage,
+  disabled,
   ...props
 }:Props) => ( 
   <>
 
     <button 
       className={`comp-button ${className}`}
+      disabled={disabled}
       onClick={(
         e:React.MouseEvent<HTMLButtonElement,MouseEvent>
         ):void => {onClickHandler(e)}}

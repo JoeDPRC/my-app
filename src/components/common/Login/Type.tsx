@@ -10,7 +10,7 @@ export type State = {
   username: string,
   password: string,
   loggedIn: boolean,
-  resStatus: string
+  buttonDisabled: boolean
 }
 
 export type Response = {

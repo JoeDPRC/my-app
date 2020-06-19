@@ -1,9 +1,9 @@
 
-export const usernameAndPasswordAreValid = (passwordError: boolean, usernameError: boolean, username: string, password: string) => 
+export const usernameAndPasswordAreValid = (passwordError: boolean, usernameError: boolean, username: string, password: string): boolean => 
   !passwordError && 
   !usernameError && 
-  username && 
-  password
+  !!(username) && 
+  !!(password)
 
 
 export const buttonErrorMessageSwitch = (username: string, password: string) => {

@@ -1,5 +1,5 @@
 export type Props={
-  enabled?: boolean,
+  disabled?: boolean,
   onClickHandler: Function, 
   children: string,
   className?: string,
