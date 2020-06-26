@@ -6,7 +6,11 @@ import Button from '../Button/Button';
 import { requestService } from '../../../service/LoginRequest';
 import {Redirect} from "react-router-dom";
 import PATHS from "../Route/Paths";
-import {usernameAndPasswordAreValid, buttonErrorMessageSwitch} from '../Utils/Utils'
+import {usernameAndPasswordAreValid} from '../Utils/Utils'
+import { connect } from 'react-redux'
+import { authType } from '../../../store/reducers/Type/Type'
+import store from '../../../store/store';
+import {logInAction} from '../../../store/actions/auth/LoginAction'
 
 const requestConfig = {
   method: 'Post', 
@@ -20,8 +24,11 @@ const errorConfig = {throwError: (error: Event) => {
   throw(error)
 }}
 
+const mapStateToProps = (state: authType) => ({
+  loggedIn: state.loggedIn
+})
 
-export default class Login extends React.Component<Props, State> {
+export default connect(mapStateToProps) (class Login extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props)
@@ -31,7 +38,6 @@ export default class Login extends React.Component<Props, State> {
       username: '',
       password: '',
       displayButtonError: false,
-      loggedIn: false,
       buttonDisabled: true
     };
 
@@ -97,9 +103,9 @@ export default class Login extends React.Component<Props, State> {
       .then((res)=>{
         if (res.status === '200') {
           this.setState({
-            loggedIn: true,
             displayButtonError: false
           })
+          store.dispatch(logInAction())
         }
       })
     } else {
@@ -113,7 +119,7 @@ export default class Login extends React.Component<Props, State> {
   render() {
     return(
       <>
-      {this.state.loggedIn ? <Redirect to={PATHS.homepage}/> :
+      {this.props.loggedIn ? <Redirect to={PATHS.homepage}/> :
         <form 
           className={this.props.className}
           onSubmit={this.clickHandler}>
@@ -141,7 +147,7 @@ export default class Login extends React.Component<Props, State> {
             placeholder={'Password...'}
             type={'password'}
             onChangeHandler={this.passwordErrorHandler}
-            errorMessage={'password must contain an upper, lower, numeric and special character'}
+            errorMessage={'You must enter a password'}
             error={this.state.passwordError}/>
 
           <Button
@@ -149,13 +155,10 @@ export default class Login extends React.Component<Props, State> {
             className={`buttonClass`}
             onClickHandler={() => {}}
             children={'Login'}
-            disabled={this.state.buttonDisabled}
-            onMessage={buttonErrorMessageSwitch(
-              this.state.username, 
-              this.state.password)}/>
+            disabled={this.state.buttonDisabled}/>
 
         </form>}
       </>
     )}
 
-}
+})

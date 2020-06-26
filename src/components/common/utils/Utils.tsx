@@ -6,21 +6,21 @@ export const usernameAndPasswordAreValid = (passwordError: boolean, usernameErro
   !!(password)
 
 
-export const buttonErrorMessageSwitch = (username: string, password: string) => {
+// export const buttonErrorMessageSwitch = (username: string, password: string) => {
   
-  switch(username) {
+//   switch(username) {
 
-    case (''):
-      return (password ? 
-        'Username is empty, please enter a valid value before trying to login. ' : 
-        'Username and Password both are empty, please enter a valid username and password before trying to login.')
+//     case (''):
+//       return (password ? 
+//         'Username is empty, please enter a valid value before trying to login. ' : 
+//         'Username and Password both are empty, please enter a valid username and password before trying to login.')
     
-    default:
-      return (password ? 
-        '' : 
-        'Password is empty, please enter a valid value before trying to login.')
-  }
-}
+//     default:
+//       return (password ? 
+//         '' : 
+//         'Password is empty, please enter a valid value before trying to login.')
+//   }
+// }
 
 // export const buttonErrorMessage = (username: string, password: string) => {
 

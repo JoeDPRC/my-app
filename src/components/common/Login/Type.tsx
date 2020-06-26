@@ -1,6 +1,7 @@
 export type Props = {
   className: string,
   formTitle: string,
+  loggedIn: boolean
 }
 
 export type State = {
@@ -9,7 +10,6 @@ export type State = {
   displayButtonError: boolean;
   username: string,
   password: string,
-  loggedIn: boolean,
   buttonDisabled: boolean
 }
 

@@ -4,30 +4,31 @@ import { Props, State } from './Type';
 import Button from '../Button/Button';
 import {Redirect} from "react-router-dom";
 import PATHS from "../Route/Paths";
+import { connect } from 'react-redux';
+import { authType } from '../../../store/reducers/Type/Type';
+import store from '../../../store/store';
+import {logoutAction} from '../../../store/actions/auth/LogoutAction';
 
+const mapStateToProps = (state: authType) => ({
+  loggedIn: state.loggedIn
+})
 
-
-export default class Home extends React.Component<Props, State> {
+export default connect(mapStateToProps) (class Home extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    this.state = {
-      loggedIn: true,
-    }
     this.clickHandler = this.clickHandler.bind(this);
   }
 
   clickHandler(e: Event):void {
     e.preventDefault()
 
-    this.setState({
-      loggedIn: false,
-    })
+    store.dispatch(logoutAction())
   }
 
   render() {
     return (
       <>
-        {!this.state.loggedIn ? <Redirect to={PATHS.login}/> :
+        {!this.props.loggedIn ? <Redirect to={PATHS.login}/> :
           <>
             <h1>Home Page</h1>
 
@@ -42,4 +43,4 @@ export default class Home extends React.Component<Props, State> {
       </>
     )
   }
-}
+})
