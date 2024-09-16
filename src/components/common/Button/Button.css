@@ -1,0 +1,27 @@
+.buttonClass {
+  display: block;
+  height: 50px;
+  width: 150px;
+  border-radius: 4px;
+  color: black;
+  background-color: cadetblue;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-left: 10px;
+
+}
+
+.onMessage {
+  margin-left: 10px;
+  color: red;
+  font-weight: bold;
+  max-width: 300px;
+}
+
+.onMessage.hide{
+  display: none
+}
+
+.onMessage.hide.show{
+  display: block
+} 
